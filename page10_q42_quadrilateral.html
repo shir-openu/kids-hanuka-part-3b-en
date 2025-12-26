@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>שאלה 42 - מרובע עם אלכסונים</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #1a1a1a;
+    --panel: #f8f9fa;
+    --border: #dee2e6;
+    --purple: #7c3aed;
+    --green: #22c55e;
+    --orange: #f59e0b;
+    --teal: #14b8a6;
+    --cyan: #06b6d4;
+    --yellow: #eab308;
+    --red: #ef4444;
+    --pink: #ec4899;
+    --blue: #3b82f6;
+    --deep-purple: #8b5cf6;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    font-size: 20px;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 32px;
+    color: var(--ink);
+    margin-bottom: 10px;
+    text-decoration: underline;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 22px;
+    color: var(--teal);
+    margin-bottom: 25px;
+  }
+
+  .exercise {
+    background: var(--panel);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 25px;
+  }
+
+  .figure-container {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid var(--border);
+  }
+
+  .given-box {
+    background: rgba(20, 184, 166, 0.1);
+    border: 2px solid var(--teal);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin: 15px 0;
+    font-size: 20px;
+  }
+
+  .progress-bar {
+    background: var(--border);
+    height: 10px;
+    border-radius: 5px;
+    margin: 20px 0;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--cyan));
+    border-radius: 5px;
+    transition: width 0.4s;
+    width: 0%;
+  }
+
+  .progress-text {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .question-item {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 15px 0;
+    transition: all 0.3s;
+  }
+
+  .question-item.correct {
+    border-color: var(--green);
+    background: rgba(34, 197, 94, 0.08);
+  }
+
+  .question-item.hint-active {
+    border-color: var(--orange);
+  }
+
+  .question-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+
+  .question-letter {
+    background: var(--teal);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .question-text {
+    font-size: 20px;
+    color: var(--ink);
+    flex-grow: 1;
+  }
+
+  .statements-container {
+    margin-top: 15px;
+  }
+
+  .statement-item {
+    background: var(--panel);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    transition: all 0.3s;
+  }
+
+  .statement-item.correct {
+    border-color: var(--green);
+    background: rgba(34, 197, 94, 0.1);
+  }
+
+  .statement-item.wrong {
+    border-color: var(--red);
+    animation: shake 0.4s;
+  }
+
+  .buttons-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 12px;
+  }
+
+  .tf-btn {
+    padding: 10px 25px;
+    font-size: 18px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: white;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: bold;
+  }
+
+  .tf-btn:hover:not(:disabled) {
+    transform: scale(1.05);
+  }
+
+  .tf-btn.true-btn:hover:not(:disabled) {
+    border-color: var(--green);
+    background: rgba(34, 197, 94, 0.1);
+    color: #166534;
+  }
+
+  .tf-btn.false-btn:hover:not(:disabled) {
+    border-color: var(--red);
+    background: rgba(239, 68, 68, 0.1);
+    color: #991b1b;
+  }
+
+  .tf-btn.correct {
+    border-color: var(--green);
+    background: rgba(34, 197, 94, 0.25);
+    color: #166534;
+  }
+
+  .tf-btn.wrong {
+    border-color: var(--red);
+    background: rgba(239, 68, 68, 0.2);
+    animation: shake 0.4s;
+  }
+
+  .tf-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+
+  .check-btn {
+    padding: 12px 28px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    background: var(--teal);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+    margin-top: 15px;
+  }
+
+  .check-btn:hover:not(:disabled) {
+    background: #0d9488;
+    transform: translateY(-2px);
+  }
+
+  .check-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+
+  .hint-box {
+    margin-top: 12px;
+    padding: 14px 18px;
+    background: rgba(245, 158, 11, 0.15);
+    border: 2px solid var(--orange);
+    border-radius: 10px;
+    font-size: 18px;
+    color: #92400e;
+    display: none;
+  }
+
+  .hint-box.show {
+    display: block;
+    animation: fadeIn 0.4s;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .success-msg {
+    color: var(--green);
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    display: none;
+    text-align: center;
+  }
+
+  .success-msg.show {
+    display: block;
+    animation: pop 0.4s;
+  }
+
+  @keyframes pop {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .explanation-box {
+    background: rgba(34, 197, 94, 0.1);
+    border: 2px solid var(--green);
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 18px;
+    color: #166534;
+    margin-top: 15px;
+    display: none;
+  }
+
+  .explanation-box.show {
+    display: block;
+    animation: fadeIn 0.4s;
+  }
+
+  .formula {
+    direction: ltr;
+    display: inline-block;
+    font-family: 'Times New Roman', serif;
+    font-size: 20px;
+    background: rgba(20, 184, 166, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .reason-select {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .reason-select:focus {
+    outline: none;
+    border-color: var(--teal);
+  }
+
+  .reason-select.correct {
+    border-color: var(--green);
+    background: rgba(34, 197, 94, 0.15);
+  }
+
+  .reason-select.wrong {
+    animation: shake 0.3s;
+    border-color: var(--red);
+  }
+
+  .celebration {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  .confetti {
+    position: absolute;
+    width: 12px; height: 12px;
+    border-radius: 2px;
+    animation: fall 3s ease-out forwards;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  .final-celebration {
+    display: none;
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.15), rgba(6, 182, 212, 0.15));
+    border: 3px solid var(--teal);
+    border-radius: 16px;
+    margin-top: 25px;
+  }
+
+  .final-celebration.show {
+    display: block;
+    animation: pop 0.5s;
+  }
+
+  .final-celebration h2 {
+    color: var(--teal);
+    font-size: 32px;
+    margin: 0 0 15px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="title">שאלה 42 - מרובע עם אלכסונים</div>
+  <div class="subtitle">הוכחות חפיפה וסימטריה</div>
+
+  <div class="progress-text">התקדמות: <span id="progressCount">0</span> מתוך 3 חלקים</div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <div class="exercise">
+    <div class="figure-container">
+      <svg xmlns="http://www.w3.org/2000/svg" width="350" height="300" viewBox="0 0 350 300">
+        <!-- Quadrilateral ABCD -->
+        <polygon points="100,40 250,40 280,260 70,260" fill="rgba(20, 184, 166, 0.15)" stroke="#14b8a6" stroke-width="3"/>
+
+        <!-- Diagonal AC -->
+        <line x1="100" y1="40" x2="280" y2="260" stroke="#7c3aed" stroke-width="2" stroke-dasharray="8,4"/>
+
+        <!-- Diagonal BD -->
+        <line x1="250" y1="40" x2="70" y2="260" stroke="#ec4899" stroke-width="2" stroke-dasharray="8,4"/>
+
+        <!-- Point E (intersection) -->
+        <circle cx="175" cy="150" r="6" fill="#f59e0b"/>
+        <text x="185" y="145" font-size="18" fill="#f59e0b" font-weight="bold">E</text>
+
+        <!-- Point labels -->
+        <text x="90" y="30" font-size="20" fill="#14b8a6" font-weight="bold">A</text>
+        <text x="255" y="30" font-size="20" fill="#14b8a6" font-weight="bold">B</text>
+        <text x="285" y="275" font-size="20" fill="#14b8a6" font-weight="bold">C</text>
+        <text x="55" y="275" font-size="20" fill="#14b8a6" font-weight="bold">D</text>
+
+        <!-- Tick marks for AE = BE -->
+        <line x1="130" y1="88" x2="140" y2="98" stroke="#7c3aed" stroke-width="3"/>
+        <line x1="210" y1="88" x2="220" y2="98" stroke="#7c3aed" stroke-width="3"/>
+
+        <!-- Double tick marks for CE = DE -->
+        <line x1="115" y1="198" x2="125" y2="208" stroke="#ec4899" stroke-width="3"/>
+        <line x1="120" y1="193" x2="130" y2="203" stroke="#ec4899" stroke-width="3"/>
+        <line x1="225" y1="198" x2="235" y2="208" stroke="#ec4899" stroke-width="3"/>
+        <line x1="230" y1="193" x2="240" y2="203" stroke="#ec4899" stroke-width="3"/>
+
+        <!-- F - midpoint of CD (for part c) -->
+        <circle cx="175" cy="260" r="5" fill="#22c55e"/>
+        <text x="175" y="285" font-size="18" fill="#22c55e" font-weight="bold">F</text>
+      </svg>
+    </div>
+
+    <div class="given-box">
+      <strong>נתון:</strong> במרובע <span class="formula">ABCD</span>, האלכסונים <span class="formula">AC</span> ו-<span class="formula">BD</span> נחתכים בנקודה <span style="color: var(--orange); font-weight: bold;">E</span>.<br>
+      בנוסף: <span class="formula">AE = BE</span> ו-<span class="formula">CE = DE</span>
+    </div>
+  </div>
+
+  <!-- Part A: Prove AD = BC -->
+  <div class="question-item" id="question-a">
+    <div class="question-header">
+      <div class="question-letter">א</div>
+      <div class="question-text">
+        הוכיחו: <span class="formula">AD = BC</span>
+      </div>
+    </div>
+
+    <div class="statements-container">
+      <p style="margin-bottom: 10px; color: #666;">בחרו את משפט החפיפה הנכון:</p>
+
+      <div class="statement-item" id="stmt-a1">
+        <div>נשתמש במשולשים <span class="formula">ΔAED</span> ו-<span class="formula">ΔBEC</span></div>
+        <select class="reason-select" id="reason-a">
+          <option value="">בחרו את הסיבה להוכחה...</option>
+          <option value="sas">צ.ז.צ (SAS) - שתי צלעות וזווית ביניהן</option>
+          <option value="asa">ז.צ.ז (ASA) - שתי זוויות וצלע ביניהן</option>
+          <option value="sss">צ.צ.צ (SSS) - שלוש צלעות</option>
+          <option value="aas">ז.ז.צ (AAS) - שתי זוויות וצלע שלא ביניהן</option>
+        </select>
+      </div>
+
+      <div style="text-align: center;">
+        <button class="check-btn" onclick="checkPartA()">בדוק</button>
+      </div>
+    </div>
+
+    <div class="hint-box" id="hint-a"></div>
+    <div class="success-msg" id="success-a">נכון! המשולשים חופפים לפי צ.ז.צ</div>
+    <div class="explanation-box" id="explain-a">
+      <strong>הסבר:</strong><br>
+      • <span class="formula">AE = BE</span> (נתון)<br>
+      • <span class="formula">DE = CE</span> (נתון)<br>
+      • <span class="formula">∠AED = ∠BEC</span> (זוויות קודקודיות)<br>
+      • לכן <span class="formula">ΔAED ≅ ΔBEC</span> לפי <strong>צ.ז.צ</strong><br>
+      • מחפיפת המשולשים: <span class="formula">AD = BC</span>
+    </div>
+  </div>
+
+  <!-- Part B: Prove angles -->
+  <div class="question-item" id="question-b">
+    <div class="question-header">
+      <div class="question-letter">ב</div>
+      <div class="question-text">
+        הוכיחו: <span class="formula">∠ABD = ∠BAC</span>
+      </div>
+    </div>
+
+    <div class="statements-container">
+      <p style="margin-bottom: 10px; color: #666;">איזה סוג משולש הוא <span class="formula">ΔABE</span>?</p>
+
+      <div class="buttons-row">
+        <button class="tf-btn" id="btn-iso" onclick="checkPartB('isosceles')">שווה שוקיים</button>
+        <button class="tf-btn" id="btn-equi" onclick="checkPartB('equilateral')">שווה צלעות</button>
+        <button class="tf-btn" id="btn-right" onclick="checkPartB('right')">ישר זווית</button>
+      </div>
+    </div>
+
+    <div class="hint-box" id="hint-b"></div>
+    <div class="success-msg" id="success-b">נכון! משולש שווה שוקיים</div>
+    <div class="explanation-box" id="explain-b">
+      <strong>הסבר:</strong><br>
+      • מכיוון ש-<span class="formula">AE = BE</span>, המשולש <span class="formula">ΔABE</span> הוא <strong>שווה שוקיים</strong><br>
+      • במשולש שווה שוקיים, זוויות הבסיס שוות: <span class="formula">∠ABE = ∠BAE</span><br>
+      • <span class="formula">∠ABD = ∠ABE</span> (אותה זווית, כי B-E-D על קו ישר)<br>
+      • <span class="formula">∠BAC = ∠BAE</span> (אותה זווית, כי A-E-C על קו ישר)<br>
+      • לכן <span class="formula">∠ABD = ∠BAC</span>
+    </div>
+  </div>
+
+  <!-- Part C: Prove AF = BF -->
+  <div class="question-item" id="question-c">
+    <div class="question-header">
+      <div class="question-letter">ג</div>
+      <div class="question-text">
+        נסמן את <span style="color: var(--green); font-weight: bold;">F</span> כאמצע <span class="formula">CD</span>. הוכיחו: <span class="formula">AF = BF</span>
+      </div>
+    </div>
+
+    <div class="statements-container">
+      <p style="margin-bottom: 10px; color: #666;">מה הרעיון המרכזי בהוכחה?</p>
+
+      <select class="reason-select" id="reason-c">
+        <option value="">בחרו את הרעיון...</option>
+        <option value="symmetry">E נמצאת על האנך האמצעי של AB, לכן F גם</option>
+        <option value="congruent">משולשים חופפים בצד שמאל וימין</option>
+        <option value="parallel">קווים מקבילים</option>
+        <option value="similar">משולשים דומים</option>
+      </select>
+
+      <div style="text-align: center;">
+        <button class="check-btn" onclick="checkPartC()">בדוק</button>
+      </div>
+    </div>
+
+    <div class="hint-box" id="hint-c"></div>
+    <div class="success-msg" id="success-c">נכון! הסימטריה דרך E היא המפתח</div>
+    <div class="explanation-box" id="explain-c">
+      <strong>הסבר:</strong><br>
+      • <span class="formula">AE = BE</span> אומר שהנקודה E נמצאת על <strong>האנך האמצעי של AB</strong><br>
+      • <span class="formula">CE = DE</span> אומר שהנקודה E נמצאת על <strong>האנך האמצעי של CD</strong><br>
+      • F היא אמצע CD, ולכן הקו EF הוא האנך האמצעי של CD<br>
+      • מסימטריית הציור, F נמצאת גם על האנך האמצעי של AB<br>
+      • כל נקודה על האנך האמצעי של AB מרוחקת באותו מרחק מ-A ומ-B<br>
+      • לכן <span class="formula">AF = BF</span>
+    </div>
+  </div>
+
+  <div class="final-celebration" id="finalCelebration">
+    <h2>כל הכבוד! סיימת את שאלה 42!</h2>
+    <div style="font-size: 20px; color: #166534;">
+      הבנת הוכחות חפיפה וסימטריה במרובעים!
+    </div>
+  </div>
+</div>
+
+<div class="celebration" id="celebration"></div>
+
+<script>
+let completed = {
+  a: false,
+  b: false,
+  c: false
+};
+
+let attempts = { a: 0, b: 0, c: 0 };
+
+const hints = {
+  a: [
+    'רמז: יש לנו שתי צלעות שוות - AE=BE ו-DE=CE',
+    'רמז: מה לגבי הזווית בין הצלעות האלה?',
+    'רמז: ∠AED ו-∠BEC הן זוויות קודקודיות!'
+  ],
+  b: [
+    'רמז: AE = BE - מה זה אומר על המשולש?',
+    'רמז: משולש עם שתי צלעות שוות הוא...'
+  ],
+  c: [
+    'רמז: חשבו על מה זה אומר ש-E מרוחקת שווה מ-A ומ-B',
+    'רמז: כל נקודה המרוחקת שווה משתי נקודות נמצאת על האנך האמצעי ביניהן'
+  ]
+};
+
+function checkPartA() {
+  if (completed.a) return;
+  attempts.a++;
+
+  const select = document.getElementById('reason-a');
+  const item = document.getElementById('question-a');
+
+  if (select.value === 'sas') {
+    completed.a = true;
+    select.classList.add('correct');
+    select.disabled = true;
+    item.classList.add('correct');
+    document.getElementById('success-a').classList.add('show');
+    document.getElementById('explain-a').classList.add('show');
+    document.getElementById('hint-a').classList.remove('show');
+    updateProgress();
+    createConfetti();
+  } else {
+    select.classList.add('wrong');
+    item.classList.add('hint-active');
+    setTimeout(() => select.classList.remove('wrong'), 400);
+    showHint('hint-a', hints.a[Math.min(attempts.a - 1, hints.a.length - 1)]);
+  }
+}
+
+function checkPartB(answer) {
+  if (completed.b) return;
+  attempts.b++;
+
+  const item = document.getElementById('question-b');
+  const btns = document.querySelectorAll('#question-b .tf-btn');
+
+  if (answer === 'isosceles') {
+    completed.b = true;
+    document.getElementById('btn-iso').classList.add('correct');
+    btns.forEach(b => b.disabled = true);
+    item.classList.add('correct');
+    document.getElementById('success-b').classList.add('show');
+    document.getElementById('explain-b').classList.add('show');
+    document.getElementById('hint-b').classList.remove('show');
+    updateProgress();
+    createConfetti();
+  } else {
+    const clickedBtn = answer === 'equilateral' ? 'btn-equi' : 'btn-right';
+    document.getElementById(clickedBtn).classList.add('wrong');
+    item.classList.add('hint-active');
+    setTimeout(() => document.getElementById(clickedBtn).classList.remove('wrong'), 400);
+    showHint('hint-b', hints.b[Math.min(attempts.b - 1, hints.b.length - 1)]);
+  }
+}
+
+function checkPartC() {
+  if (completed.c) return;
+  attempts.c++;
+
+  const select = document.getElementById('reason-c');
+  const item = document.getElementById('question-c');
+
+  if (select.value === 'symmetry') {
+    completed.c = true;
+    select.classList.add('correct');
+    select.disabled = true;
+    item.classList.add('correct');
+    document.getElementById('success-c').classList.add('show');
+    document.getElementById('explain-c').classList.add('show');
+    document.getElementById('hint-c').classList.remove('show');
+    updateProgress();
+    createConfetti();
+  } else {
+    select.classList.add('wrong');
+    item.classList.add('hint-active');
+    setTimeout(() => select.classList.remove('wrong'), 400);
+    showHint('hint-c', hints.c[Math.min(attempts.c - 1, hints.c.length - 1)]);
+  }
+}
+
+function showHint(id, text) {
+  const hint = document.getElementById(id);
+  hint.innerHTML = '💡 ' + text;
+  hint.classList.add('show');
+}
+
+function updateProgress() {
+  let count = 0;
+  if (completed.a) count++;
+  if (completed.b) count++;
+  if (completed.c) count++;
+
+  document.getElementById('progressCount').textContent = count;
+  document.getElementById('progressFill').style.width = (count / 3 * 100) + '%';
+
+  if (count === 3) {
+    setTimeout(() => {
+      document.getElementById('finalCelebration').classList.add('show');
+      bigConfetti();
+    }, 500);
+  }
+}
+
+function createConfetti() {
+  const c = document.getElementById('celebration');
+  const colors = ['#14b8a6', '#06b6d4', '#22c55e', '#f59e0b', '#7c3aed'];
+  for (let i = 0; i < 30; i++) {
+    const d = document.createElement('div');
+    d.className = 'confetti';
+    d.style.left = Math.random() * 100 + '%';
+    d.style.background = colors[Math.floor(Math.random() * colors.length)];
+    d.style.animationDelay = Math.random() * 0.4 + 's';
+    c.appendChild(d);
+  }
+  setTimeout(() => { c.innerHTML = ''; }, 3000);
+}
+
+function bigConfetti() {
+  const c = document.getElementById('celebration');
+  const colors = ['#14b8a6', '#06b6d4', '#22c55e', '#f59e0b', '#7c3aed', '#ec4899'];
+  for (let i = 0; i < 80; i++) {
+    const d = document.createElement('div');
+    d.className = 'confetti';
+    d.style.left = Math.random() * 100 + '%';
+    d.style.background = colors[Math.floor(Math.random() * colors.length)];
+    d.style.animationDelay = Math.random() * 1 + 's';
+    d.style.width = (8 + Math.random() * 8) + 'px';
+    d.style.height = (8 + Math.random() * 8) + 'px';
+    c.appendChild(d);
+  }
+  setTimeout(() => { c.innerHTML = ''; }, 4000);
+}
+</script>
+
+</body>
+</html>
