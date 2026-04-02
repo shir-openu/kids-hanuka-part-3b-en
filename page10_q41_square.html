@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>שאלה 41 - ריבוע עם אמצעי צלעות</title>
+<title>Question 41 - Square with Side Midpoints</title>
 <style>
   :root {
     --bg: #ffffff;
@@ -401,15 +401,23 @@
     font-size: 18px;
     color: #666;
   }
+
+  footer {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    margin-top: 30px;
+    padding: 15px;
+  }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <div class="title">שאלה 41 - הוכחת חפיפה בריבוע</div>
-  <div class="subtitle">ריבוע ABCD עם אמצעי צלעות</div>
+  <div class="title">Question 41 - Proving Congruence in a Square</div>
+  <div class="subtitle">Square ABCD with Side Midpoints</div>
 
-  <div class="progress-text">התקדמות: <span id="progressCount">0</span> מתוך 3 חלקים</div>
+  <div class="progress-text">Progress: <span id="progressCount">0</span> out of 3 parts</div>
   <div class="progress-bar">
     <div class="progress-fill" id="progressFill"></div>
   </div>
@@ -457,133 +465,135 @@
     </div>
 
     <div class="given-box">
-      <strong>נתון:</strong> בריבוע <span class="formula">ABCD</span>, הנקודות <span style="color: var(--green); font-weight: bold;">E</span> ו-<span style="color: var(--green); font-weight: bold;">F</span> הן אמצעי הצלעות <span class="formula">BC</span> ו-<span class="formula">AD</span> בהתאמה.
+      <strong>Given:</strong> In square <span class="formula">ABCD</span>, the points <span style="color: var(--green); font-weight: bold;">E</span> and <span style="color: var(--green); font-weight: bold;">F</span> are the midpoints of sides <span class="formula">BC</span> and <span class="formula">AD</span> respectively.
     </div>
   </div>
 
   <!-- Part A: Prove congruence -->
   <div class="question-item" id="question-a">
     <div class="question-header">
-      <div class="question-letter">א</div>
+      <div class="question-letter">a</div>
       <div class="question-text">
-        הוכיחו: <span class="formula">ΔABF ≅ ΔCDE</span>
+        Prove: <span class="formula">ΔABF ≅ ΔCDE</span>
       </div>
     </div>
 
     <div class="proof-steps">
-      <p style="margin-bottom: 15px; color: #666;">סדרו את שלבי ההוכחה בסדר הנכון:</p>
+      <p style="margin-bottom: 15px; color: #666;">Arrange the proof steps in the correct order:</p>
 
       <div class="proof-step" id="step-1">
         <div class="step-number">1</div>
         <select class="step-select" id="select-1">
-          <option value="">בחרו שלב...</option>
-          <option value="sides">AB = CD (צלעות ריבוע)</option>
-          <option value="midpoints">AF = CE (אמצעי צלעות)</option>
-          <option value="angles">∠BAF = ∠DCE = 90° (זוויות ריבוע)</option>
-          <option value="conclusion">לכן ΔABF ≅ ΔCDE לפי צ.ז.צ</option>
+          <option value="">Choose a step...</option>
+          <option value="sides">AB = CD (sides of a square)</option>
+          <option value="midpoints">AF = CE (midpoints of sides)</option>
+          <option value="angles">∠BAF = ∠DCE = 90° (angles of a square)</option>
+          <option value="conclusion">Therefore ΔABF ≅ ΔCDE by SAS</option>
         </select>
       </div>
 
       <div class="proof-step" id="step-2">
         <div class="step-number">2</div>
         <select class="step-select" id="select-2">
-          <option value="">בחרו שלב...</option>
-          <option value="sides">AB = CD (צלעות ריבוע)</option>
-          <option value="midpoints">AF = CE (אמצעי צלעות)</option>
-          <option value="angles">∠BAF = ∠DCE = 90° (זוויות ריבוע)</option>
-          <option value="conclusion">לכן ΔABF ≅ ΔCDE לפי צ.ז.צ</option>
+          <option value="">Choose a step...</option>
+          <option value="sides">AB = CD (sides of a square)</option>
+          <option value="midpoints">AF = CE (midpoints of sides)</option>
+          <option value="angles">∠BAF = ∠DCE = 90° (angles of a square)</option>
+          <option value="conclusion">Therefore ΔABF ≅ ΔCDE by SAS</option>
         </select>
       </div>
 
       <div class="proof-step" id="step-3">
         <div class="step-number">3</div>
         <select class="step-select" id="select-3">
-          <option value="">בחרו שלב...</option>
-          <option value="sides">AB = CD (צלעות ריבוע)</option>
-          <option value="midpoints">AF = CE (אמצעי צלעות)</option>
-          <option value="angles">∠BAF = ∠DCE = 90° (זוויות ריבוע)</option>
-          <option value="conclusion">לכן ΔABF ≅ ΔCDE לפי צ.ז.צ</option>
+          <option value="">Choose a step...</option>
+          <option value="sides">AB = CD (sides of a square)</option>
+          <option value="midpoints">AF = CE (midpoints of sides)</option>
+          <option value="angles">∠BAF = ∠DCE = 90° (angles of a square)</option>
+          <option value="conclusion">Therefore ΔABF ≅ ΔCDE by SAS</option>
         </select>
       </div>
 
       <div class="proof-step" id="step-4">
         <div class="step-number">4</div>
         <select class="step-select" id="select-4">
-          <option value="">בחרו שלב...</option>
-          <option value="sides">AB = CD (צלעות ריבוע)</option>
-          <option value="midpoints">AF = CE (אמצעי צלעות)</option>
-          <option value="angles">∠BAF = ∠DCE = 90° (זוויות ריבוע)</option>
-          <option value="conclusion">לכן ΔABF ≅ ΔCDE לפי צ.ז.צ</option>
+          <option value="">Choose a step...</option>
+          <option value="sides">AB = CD (sides of a square)</option>
+          <option value="midpoints">AF = CE (midpoints of sides)</option>
+          <option value="angles">∠BAF = ∠DCE = 90° (angles of a square)</option>
+          <option value="conclusion">Therefore ΔABF ≅ ΔCDE by SAS</option>
         </select>
       </div>
     </div>
 
     <div style="text-align: center;">
-      <button class="check-btn" onclick="checkProof()">בדוק הוכחה</button>
+      <button class="check-btn" onclick="checkProof()">Check Proof</button>
     </div>
 
     <div class="hint-box" id="hint-a"></div>
-    <div class="success-msg" id="success-a">מצוין! ההוכחה נכונה!</div>
+    <div class="success-msg" id="success-a">Excellent! The proof is correct!</div>
     <div class="explanation-box" id="explain-a">
-      <strong>הסבר:</strong><br>
-      1. <span class="formula">AB = CD</span> - כי כל צלעות הריבוע שוות<br>
-      2. <span class="formula">AF = CE</span> - כי F אמצע AD ו-E אמצע BC, ולכן שניהם שווים לחצי מאורך הצלע<br>
-      3. <span class="formula">∠BAF = ∠DCE = 90°</span> - כי כל זוויות הריבוע ישרות<br>
-      4. לכן המשולשים חופפים לפי <strong>צ.ז.צ (SAS)</strong>
+      <strong>Explanation:</strong><br>
+      1. <span class="formula">AB = CD</span> - because all sides of a square are equal<br>
+      2. <span class="formula">AF = CE</span> - because F is the midpoint of AD and E is the midpoint of BC, so both equal half the side length<br>
+      3. <span class="formula">∠BAF = ∠DCE = 90°</span> - because all angles in a square are right angles<br>
+      4. Therefore the triangles are congruent by <strong>SAS (Side-Angle-Side)</strong>
     </div>
   </div>
 
   <!-- Part B: Calculate areas -->
   <div class="question-item" id="question-b">
     <div class="question-header">
-      <div class="question-letter">ב</div>
+      <div class="question-letter">b</div>
       <div class="question-text">
-        נתון שהיקף הריבוע הוא <span class="formula">24 ס"מ</span>. חשבו:
+        Given that the perimeter of the square is <span class="formula">24 cm</span>. Calculate:
       </div>
     </div>
 
     <div class="given-box" style="background: rgba(59, 130, 246, 0.1); border-color: var(--blue);">
-      <strong>רמז:</strong> אורך צלע הריבוע = היקף ÷ 4 = <span class="formula">24 ÷ 4 = 6</span> ס"מ
+      <strong>Hint:</strong> Side length of the square = perimeter / 4 = <span class="formula">24 / 4 = 6</span> cm
     </div>
 
     <div style="margin: 20px 0;">
-      <p style="font-weight: bold; margin-bottom: 10px;">שטח הריבוע ABCD:</p>
+      <p style="font-weight: bold; margin-bottom: 10px;">Area of square ABCD:</p>
       <div class="input-row">
         <input type="text" class="answer-input" id="area-square" placeholder="?">
-        <span class="unit">ס"מ²</span>
-        <button class="check-btn" onclick="checkSquareArea()">בדוק</button>
+        <span class="unit">cm²</span>
+        <button class="check-btn" onclick="checkSquareArea()">Check</button>
       </div>
       <div class="hint-box" id="hint-square"></div>
-      <div class="success-msg" id="success-square">נכון! 6² = 36</div>
+      <div class="success-msg" id="success-square">Correct! 6² = 36</div>
     </div>
 
     <div style="margin: 20px 0;">
-      <p style="font-weight: bold; margin-bottom: 10px;">שטח המשולש ABF:</p>
+      <p style="font-weight: bold; margin-bottom: 10px;">Area of triangle ABF:</p>
       <div class="input-row">
         <input type="text" class="answer-input" id="area-triangle" placeholder="?">
-        <span class="unit">ס"מ²</span>
-        <button class="check-btn" onclick="checkTriangleArea()">בדוק</button>
+        <span class="unit">cm²</span>
+        <button class="check-btn" onclick="checkTriangleArea()">Check</button>
       </div>
       <div class="hint-box" id="hint-triangle"></div>
-      <div class="success-msg" id="success-triangle">נכון! (6 × 3) ÷ 2 = 9</div>
+      <div class="success-msg" id="success-triangle">Correct! (6 × 3) / 2 = 9</div>
     </div>
 
     <div class="explanation-box" id="explain-b">
-      <strong>פתרון מלא:</strong><br>
-      • צלע הריבוע: <span class="formula">s = 24 ÷ 4 = 6</span> ס"מ<br>
-      • שטח הריבוע: <span class="formula">s² = 6² = 36</span> ס"מ²<br>
-      • AF = AD ÷ 2 = 6 ÷ 2 = 3 ס"מ<br>
-      • שטח משולש ABF: <span class="formula">(AB × AF) ÷ 2 = (6 × 3) ÷ 2 = 9</span> ס"מ²
+      <strong>Full solution:</strong><br>
+      • Side of the square: <span class="formula">s = 24 / 4 = 6</span> cm<br>
+      • Area of the square: <span class="formula">s² = 6² = 36</span> cm²<br>
+      • AF = AD / 2 = 6 / 2 = 3 cm<br>
+      • Area of triangle ABF: <span class="formula">(AB × AF) / 2 = (6 × 3) / 2 = 9</span> cm²
     </div>
   </div>
 
   <div class="final-celebration" id="finalCelebration">
-    <h2>כל הכבוד! סיימת את שאלה 41!</h2>
+    <h2>Well done! You completed Question 41!</h2>
     <div style="font-size: 20px; color: #166534;">
-      הבנת איך להוכיח חפיפת משולשים ולחשב שטחים בריבוע!
+      You understood how to prove triangle congruence and calculate areas in a square!
     </div>
   </div>
 </div>
+
+<footer>&copy; Developed by Shir Sivroni</footer>
 
 <div class="celebration" id="celebration"></div>
 
@@ -603,18 +613,18 @@ let triangleAttempts = 0;
 
 const hints = {
   proof: [
-    'רמז: צריך להראות שתי צלעות שוות וזווית ביניהן',
-    'רמז: הזווית צריכה להיות בין שתי הצלעות השוות',
-    'רמז: סדר נכון: שתי צלעות שוות, זווית ישרה, ואז המסקנה'
+    'Hint: You need to show two equal sides and an angle between them',
+    'Hint: The angle must be between the two equal sides',
+    'Hint: Correct order: two equal sides, right angle, then the conclusion'
   ],
   square: [
-    'רמז: שטח ריבוע = צלע × צלע',
-    'רמז: צלע = 6, אז 6 × 6 = ?'
+    'Hint: Area of a square = side × side',
+    'Hint: Side = 6, so 6 × 6 = ?'
   ],
   triangle: [
-    'רמז: שטח משולש ישר זווית = (ניצב × ניצב) ÷ 2',
-    'רמז: AB = 6, AF = 3 (חצי מהצלע)',
-    'רמז: (6 × 3) ÷ 2 = ?'
+    'Hint: Area of a right triangle = (leg × leg) / 2',
+    'Hint: AB = 6, AF = 3 (half the side)',
+    'Hint: (6 × 3) / 2 = ?'
   ]
 };
 
@@ -632,7 +642,7 @@ function checkProof() {
 
   // Check if all selected
   if (values.some(v => v === '')) {
-    showHint('hint-a', 'יש לבחור את כל השלבים');
+    showHint('hint-a', 'Please select all steps');
     return;
   }
 

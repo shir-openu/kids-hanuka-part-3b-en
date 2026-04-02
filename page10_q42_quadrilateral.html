@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>שאלה 42 - מרובע עם אלכסונים</title>
+<title>Question 42 - Quadrilateral with Diagonals</title>
 <style>
   :root {
     --bg: #ffffff;
@@ -387,15 +387,23 @@
     font-size: 32px;
     margin: 0 0 15px 0;
   }
+
+  footer {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    margin-top: 30px;
+    padding: 15px;
+  }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <div class="title">שאלה 42 - מרובע עם אלכסונים</div>
-  <div class="subtitle">הוכחות חפיפה וסימטריה</div>
+  <div class="title">Question 42 - Quadrilateral with Diagonals</div>
+  <div class="subtitle">Congruence and Symmetry Proofs</div>
 
-  <div class="progress-text">התקדמות: <span id="progressCount">0</span> מתוך 3 חלקים</div>
+  <div class="progress-text">Progress: <span id="progressCount">0</span> out of 3 parts</div>
   <div class="progress-bar">
     <div class="progress-fill" id="progressFill"></div>
   </div>
@@ -439,127 +447,129 @@
     </div>
 
     <div class="given-box">
-      <strong>נתון:</strong> במרובע <span class="formula">ABCD</span>, האלכסונים <span class="formula">AC</span> ו-<span class="formula">BD</span> נחתכים בנקודה <span style="color: var(--orange); font-weight: bold;">E</span>.<br>
-      בנוסף: <span class="formula">AE = BE</span> ו-<span class="formula">CE = DE</span>
+      <strong>Given:</strong> In quadrilateral <span class="formula">ABCD</span>, the diagonals <span class="formula">AC</span> and <span class="formula">BD</span> intersect at point <span style="color: var(--orange); font-weight: bold;">E</span>.<br>
+      Additionally: <span class="formula">AE = BE</span> and <span class="formula">CE = DE</span>
     </div>
   </div>
 
   <!-- Part A: Prove AD = BC -->
   <div class="question-item" id="question-a">
     <div class="question-header">
-      <div class="question-letter">א</div>
+      <div class="question-letter">a</div>
       <div class="question-text">
-        הוכיחו: <span class="formula">AD = BC</span>
+        Prove: <span class="formula">AD = BC</span>
       </div>
     </div>
 
     <div class="statements-container">
-      <p style="margin-bottom: 10px; color: #666;">בחרו את משפט החפיפה הנכון:</p>
+      <p style="margin-bottom: 10px; color: #666;">Choose the correct congruence theorem:</p>
 
       <div class="statement-item" id="stmt-a1">
-        <div>נשתמש במשולשים <span class="formula">ΔAED</span> ו-<span class="formula">ΔBEC</span></div>
+        <div>We use triangles <span class="formula">ΔAED</span> and <span class="formula">ΔBEC</span></div>
         <select class="reason-select" id="reason-a">
-          <option value="">בחרו את הסיבה להוכחה...</option>
-          <option value="sas">צ.ז.צ (SAS) - שתי צלעות וזווית ביניהן</option>
-          <option value="asa">ז.צ.ז (ASA) - שתי זוויות וצלע ביניהן</option>
-          <option value="sss">צ.צ.צ (SSS) - שלוש צלעות</option>
-          <option value="aas">ז.ז.צ (AAS) - שתי זוויות וצלע שלא ביניהן</option>
+          <option value="">Choose the reason for the proof...</option>
+          <option value="sas">SAS (Side-Angle-Side) - two sides and the included angle</option>
+          <option value="asa">ASA (Angle-Side-Angle) - two angles and the included side</option>
+          <option value="sss">SSS (Side-Side-Side) - three sides</option>
+          <option value="aas">AAS (Angle-Angle-Side) - two angles and a non-included side</option>
         </select>
       </div>
 
       <div style="text-align: center;">
-        <button class="check-btn" onclick="checkPartA()">בדוק</button>
+        <button class="check-btn" onclick="checkPartA()">Check</button>
       </div>
     </div>
 
     <div class="hint-box" id="hint-a"></div>
-    <div class="success-msg" id="success-a">נכון! המשולשים חופפים לפי צ.ז.צ</div>
+    <div class="success-msg" id="success-a">Correct! The triangles are congruent by SAS</div>
     <div class="explanation-box" id="explain-a">
-      <strong>הסבר:</strong><br>
-      • <span class="formula">AE = BE</span> (נתון)<br>
-      • <span class="formula">DE = CE</span> (נתון)<br>
-      • <span class="formula">∠AED = ∠BEC</span> (זוויות קודקודיות)<br>
-      • לכן <span class="formula">ΔAED ≅ ΔBEC</span> לפי <strong>צ.ז.צ</strong><br>
-      • מחפיפת המשולשים: <span class="formula">AD = BC</span>
+      <strong>Explanation:</strong><br>
+      • <span class="formula">AE = BE</span> (given)<br>
+      • <span class="formula">DE = CE</span> (given)<br>
+      • <span class="formula">∠AED = ∠BEC</span> (vertical angles)<br>
+      • Therefore <span class="formula">ΔAED ≅ ΔBEC</span> by <strong>SAS</strong><br>
+      • From the congruence: <span class="formula">AD = BC</span>
     </div>
   </div>
 
   <!-- Part B: Prove angles -->
   <div class="question-item" id="question-b">
     <div class="question-header">
-      <div class="question-letter">ב</div>
+      <div class="question-letter">b</div>
       <div class="question-text">
-        הוכיחו: <span class="formula">∠ABD = ∠BAC</span>
+        Prove: <span class="formula">∠ABD = ∠BAC</span>
       </div>
     </div>
 
     <div class="statements-container">
-      <p style="margin-bottom: 10px; color: #666;">איזה סוג משולש הוא <span class="formula">ΔABE</span>?</p>
+      <p style="margin-bottom: 10px; color: #666;">What type of triangle is <span class="formula">ΔABE</span>?</p>
 
       <div class="buttons-row">
-        <button class="tf-btn" id="btn-iso" onclick="checkPartB('isosceles')">שווה שוקיים</button>
-        <button class="tf-btn" id="btn-equi" onclick="checkPartB('equilateral')">שווה צלעות</button>
-        <button class="tf-btn" id="btn-right" onclick="checkPartB('right')">ישר זווית</button>
+        <button class="tf-btn" id="btn-iso" onclick="checkPartB('isosceles')">Isosceles</button>
+        <button class="tf-btn" id="btn-equi" onclick="checkPartB('equilateral')">Equilateral</button>
+        <button class="tf-btn" id="btn-right" onclick="checkPartB('right')">Right</button>
       </div>
     </div>
 
     <div class="hint-box" id="hint-b"></div>
-    <div class="success-msg" id="success-b">נכון! משולש שווה שוקיים</div>
+    <div class="success-msg" id="success-b">Correct! An isosceles triangle</div>
     <div class="explanation-box" id="explain-b">
-      <strong>הסבר:</strong><br>
-      • מכיוון ש-<span class="formula">AE = BE</span>, המשולש <span class="formula">ΔABE</span> הוא <strong>שווה שוקיים</strong><br>
-      • במשולש שווה שוקיים, זוויות הבסיס שוות: <span class="formula">∠ABE = ∠BAE</span><br>
-      • <span class="formula">∠ABD = ∠ABE</span> (אותה זווית, כי B-E-D על קו ישר)<br>
-      • <span class="formula">∠BAC = ∠BAE</span> (אותה זווית, כי A-E-C על קו ישר)<br>
-      • לכן <span class="formula">∠ABD = ∠BAC</span>
+      <strong>Explanation:</strong><br>
+      • Since <span class="formula">AE = BE</span>, triangle <span class="formula">ΔABE</span> is <strong>isosceles</strong><br>
+      • In an isosceles triangle, the base angles are equal: <span class="formula">∠ABE = ∠BAE</span><br>
+      • <span class="formula">∠ABD = ∠ABE</span> (same angle, since B-E-D are collinear)<br>
+      • <span class="formula">∠BAC = ∠BAE</span> (same angle, since A-E-C are collinear)<br>
+      • Therefore <span class="formula">∠ABD = ∠BAC</span>
     </div>
   </div>
 
   <!-- Part C: Prove AF = BF -->
   <div class="question-item" id="question-c">
     <div class="question-header">
-      <div class="question-letter">ג</div>
+      <div class="question-letter">c</div>
       <div class="question-text">
-        נסמן את <span style="color: var(--green); font-weight: bold;">F</span> כאמצע <span class="formula">CD</span>. הוכיחו: <span class="formula">AF = BF</span>
+        Let <span style="color: var(--green); font-weight: bold;">F</span> be the midpoint of <span class="formula">CD</span>. Prove: <span class="formula">AF = BF</span>
       </div>
     </div>
 
     <div class="statements-container">
-      <p style="margin-bottom: 10px; color: #666;">מה הרעיון המרכזי בהוכחה?</p>
+      <p style="margin-bottom: 10px; color: #666;">What is the key idea in the proof?</p>
 
       <select class="reason-select" id="reason-c">
-        <option value="">בחרו את הרעיון...</option>
-        <option value="symmetry">E נמצאת על האנך האמצעי של AB, לכן F גם</option>
-        <option value="congruent">משולשים חופפים בצד שמאל וימין</option>
-        <option value="parallel">קווים מקבילים</option>
-        <option value="similar">משולשים דומים</option>
+        <option value="">Choose the idea...</option>
+        <option value="symmetry">E lies on the perpendicular bisector of AB, so F does too</option>
+        <option value="congruent">Congruent triangles on the left and right sides</option>
+        <option value="parallel">Parallel lines</option>
+        <option value="similar">Similar triangles</option>
       </select>
 
       <div style="text-align: center;">
-        <button class="check-btn" onclick="checkPartC()">בדוק</button>
+        <button class="check-btn" onclick="checkPartC()">Check</button>
       </div>
     </div>
 
     <div class="hint-box" id="hint-c"></div>
-    <div class="success-msg" id="success-c">נכון! הסימטריה דרך E היא המפתח</div>
+    <div class="success-msg" id="success-c">Correct! The symmetry through E is the key</div>
     <div class="explanation-box" id="explain-c">
-      <strong>הסבר:</strong><br>
-      • <span class="formula">AE = BE</span> אומר שהנקודה E נמצאת על <strong>האנך האמצעי של AB</strong><br>
-      • <span class="formula">CE = DE</span> אומר שהנקודה E נמצאת על <strong>האנך האמצעי של CD</strong><br>
-      • F היא אמצע CD, ולכן הקו EF הוא האנך האמצעי של CD<br>
-      • מסימטריית הציור, F נמצאת גם על האנך האמצעי של AB<br>
-      • כל נקודה על האנך האמצעי של AB מרוחקת באותו מרחק מ-A ומ-B<br>
-      • לכן <span class="formula">AF = BF</span>
+      <strong>Explanation:</strong><br>
+      • <span class="formula">AE = BE</span> means that point E lies on the <strong>perpendicular bisector of AB</strong><br>
+      • <span class="formula">CE = DE</span> means that point E lies on the <strong>perpendicular bisector of CD</strong><br>
+      • F is the midpoint of CD, so line EF is the perpendicular bisector of CD<br>
+      • By the symmetry of the figure, F also lies on the perpendicular bisector of AB<br>
+      • Any point on the perpendicular bisector of AB is equidistant from A and B<br>
+      • Therefore <span class="formula">AF = BF</span>
     </div>
   </div>
 
   <div class="final-celebration" id="finalCelebration">
-    <h2>כל הכבוד! סיימת את שאלה 42!</h2>
+    <h2>Well done! You completed Question 42!</h2>
     <div style="font-size: 20px; color: #166534;">
-      הבנת הוכחות חפיפה וסימטריה במרובעים!
+      You understood congruence and symmetry proofs in quadrilaterals!
     </div>
   </div>
 </div>
+
+<footer>&copy; Developed by Shir Sivroni</footer>
 
 <div class="celebration" id="celebration"></div>
 
@@ -574,17 +584,17 @@ let attempts = { a: 0, b: 0, c: 0 };
 
 const hints = {
   a: [
-    'רמז: יש לנו שתי צלעות שוות - AE=BE ו-DE=CE',
-    'רמז: מה לגבי הזווית בין הצלעות האלה?',
-    'רמז: ∠AED ו-∠BEC הן זוויות קודקודיות!'
+    'Hint: We have two equal sides - AE=BE and DE=CE',
+    'Hint: What about the angle between those sides?',
+    'Hint: ∠AED and ∠BEC are vertical angles!'
   ],
   b: [
-    'רמז: AE = BE - מה זה אומר על המשולש?',
-    'רמז: משולש עם שתי צלעות שוות הוא...'
+    'Hint: AE = BE - what does that say about the triangle?',
+    'Hint: A triangle with two equal sides is...'
   ],
   c: [
-    'רמז: חשבו על מה זה אומר ש-E מרוחקת שווה מ-A ומ-B',
-    'רמז: כל נקודה המרוחקת שווה משתי נקודות נמצאת על האנך האמצעי ביניהן'
+    'Hint: Think about what it means that E is equidistant from A and B',
+    'Hint: Any point equidistant from two points lies on the perpendicular bisector between them'
   ]
 };
 

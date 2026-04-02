@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>שאלה 43 - קואורדינטות</title>
+<title>Question 43 - Coordinates</title>
 <style>
   :root {
     --bg: #ffffff;
@@ -359,15 +359,23 @@
   .coord-point.b { color: var(--purple); }
   .coord-point.c { color: var(--green); }
   .coord-point.o { color: var(--blue); }
+
+  footer {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    margin-top: 30px;
+    padding: 15px;
+  }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <div class="title">שאלה 43 - גאומטריה אנליטית</div>
-  <div class="subtitle">נקודות וזוויות במערכת צירים</div>
+  <div class="title">Question 43 - Analytic Geometry</div>
+  <div class="subtitle">Points and Angles in the Coordinate System</div>
 
-  <div class="progress-text">התקדמות: <span id="progressCount">0</span> מתוך 2 חלקים</div>
+  <div class="progress-text">Progress: <span id="progressCount">0</span> out of 2 parts</div>
   <div class="progress-bar">
     <div class="progress-fill" id="progressFill"></div>
   </div>
@@ -445,114 +453,116 @@
     </div>
 
     <div class="given-box">
-      <strong>נתון:</strong><br>
+      <strong>Given:</strong><br>
       • <span class="coord-point a">A(6,6)</span>, <span class="coord-point b">B(0,4)</span>, <span class="coord-point c">C(4,0)</span><br>
-      • <span class="coord-point o">O</span> היא ראשית הצירים (0,0)<br>
-      • הקטע <span class="formula">AO</span> חוצה את הזווית <span class="formula">∠BOC</span>
+      • <span class="coord-point o">O</span> is the origin (0,0)<br>
+      • Segment <span class="formula">AO</span> bisects angle <span class="formula">∠BOC</span>
     </div>
   </div>
 
   <!-- Part A: Find angle AOC -->
   <div class="question-item" id="question-a">
     <div class="question-header">
-      <div class="question-letter">א</div>
+      <div class="question-letter">a</div>
       <div class="question-text">
-        מצאו את הזווית <span class="formula">∠AOC</span>
+        Find angle <span class="formula">∠AOC</span>
       </div>
     </div>
 
     <div class="given-box" style="background: rgba(245, 158, 11, 0.1); border-color: var(--orange);">
-      <strong>שימו לב:</strong><br>
-      • B נמצאת על ציר Y החיובי (כי x=0)<br>
-      • C נמצאת על ציר X החיובי (כי y=0)<br>
-      • מה הזווית בין ציר X לציר Y?
+      <strong>Note:</strong><br>
+      • B is on the positive Y-axis (since x=0)<br>
+      • C is on the positive X-axis (since y=0)<br>
+      • What is the angle between the X-axis and the Y-axis?
     </div>
 
     <div class="input-row">
       <span class="formula">∠AOC = </span>
       <input type="text" class="answer-input" id="angle-aoc" placeholder="?">
-      <span class="unit">מעלות</span>
-      <button class="check-btn" onclick="checkPartA()">בדוק</button>
+      <span class="unit">degrees</span>
+      <button class="check-btn" onclick="checkPartA()">Check</button>
     </div>
 
     <div class="hint-box" id="hint-a"></div>
-    <div class="success-msg" id="success-a">נכון! 90° ÷ 2 = 45°</div>
+    <div class="success-msg" id="success-a">Correct! 90° / 2 = 45°</div>
     <div class="explanation-box" id="explain-a">
-      <strong>הסבר:</strong><br>
-      • OB הוא ציר Y החיובי, OC הוא ציר X החיובי<br>
-      • הזווית בין הצירים: <span class="formula">∠BOC = 90°</span><br>
-      • AO חוצה את הזווית ∠BOC<br>
-      • לכן <span class="formula">∠AOC = 90° ÷ 2 = 45°</span>
+      <strong>Explanation:</strong><br>
+      • OB is the positive Y-axis, OC is the positive X-axis<br>
+      • The angle between the axes: <span class="formula">∠BOC = 90°</span><br>
+      • AO bisects angle ∠BOC<br>
+      • Therefore <span class="formula">∠AOC = 90° / 2 = 45°</span>
     </div>
   </div>
 
   <!-- Part B: Prove congruence -->
   <div class="question-item" id="question-b">
     <div class="question-header">
-      <div class="question-letter">ב</div>
+      <div class="question-letter">b</div>
       <div class="question-text">
-        הוכיחו שהמשולשים <span class="formula">ΔABO</span> ו-<span class="formula">ΔACO</span> חופפים
+        Prove that triangles <span class="formula">ΔABO</span> and <span class="formula">ΔACO</span> are congruent
       </div>
     </div>
 
     <div class="given-box" style="background: rgba(124, 58, 237, 0.1); border-color: var(--purple);">
-      <strong>רמז:</strong> חשבו על אורכי הקטעים OB ו-OC<br>
-      • OB = המרחק מראשית הצירים ל-B(0,4) = ?<br>
-      • OC = המרחק מראשית הצירים ל-C(4,0) = ?
+      <strong>Hint:</strong> Think about the lengths of segments OB and OC<br>
+      • OB = distance from the origin to B(0,4) = ?<br>
+      • OC = distance from the origin to C(4,0) = ?
     </div>
 
     <div style="margin: 15px 0;">
-      <p style="color: #666; margin-bottom: 10px;">מה אורך OB?</p>
+      <p style="color: #666; margin-bottom: 10px;">What is the length of OB?</p>
       <div class="input-row">
         <span class="formula">OB = </span>
         <input type="text" class="answer-input" id="len-ob" placeholder="?" style="width: 60px;">
-        <button class="check-btn" onclick="checkOB()" style="padding: 10px 20px; font-size: 16px;">בדוק</button>
+        <button class="check-btn" onclick="checkOB()" style="padding: 10px 20px; font-size: 16px;">Check</button>
       </div>
     </div>
 
     <div style="margin: 15px 0;">
-      <p style="color: #666; margin-bottom: 10px;">מה אורך OC?</p>
+      <p style="color: #666; margin-bottom: 10px;">What is the length of OC?</p>
       <div class="input-row">
         <span class="formula">OC = </span>
         <input type="text" class="answer-input" id="len-oc" placeholder="?" style="width: 60px;">
-        <button class="check-btn" onclick="checkOC()" style="padding: 10px 20px; font-size: 16px;">בדוק</button>
+        <button class="check-btn" onclick="checkOC()" style="padding: 10px 20px; font-size: 16px;">Check</button>
       </div>
     </div>
 
     <div style="margin: 20px 0;">
-      <p style="color: #666; margin-bottom: 10px;">בחרו את משפט החפיפה:</p>
+      <p style="color: #666; margin-bottom: 10px;">Choose the congruence theorem:</p>
       <select class="reason-select" id="reason-b">
-        <option value="">בחרו משפט חפיפה...</option>
-        <option value="sas">צ.ז.צ (SAS) - שתי צלעות וזווית ביניהן</option>
-        <option value="asa">ז.צ.ז (ASA) - שתי זוויות וצלע ביניהן</option>
-        <option value="sss">צ.צ.צ (SSS) - שלוש צלעות</option>
-        <option value="hl">ניצב-יתר (HL) - במשולש ישר זווית</option>
+        <option value="">Choose a congruence theorem...</option>
+        <option value="sas">SAS (Side-Angle-Side) - two sides and the included angle</option>
+        <option value="asa">ASA (Angle-Side-Angle) - two angles and the included side</option>
+        <option value="sss">SSS (Side-Side-Side) - three sides</option>
+        <option value="hl">HL (Hypotenuse-Leg) - in a right triangle</option>
       </select>
       <div style="text-align: center; margin-top: 15px;">
-        <button class="check-btn" onclick="checkPartB()">בדוק הוכחה</button>
+        <button class="check-btn" onclick="checkPartB()">Check Proof</button>
       </div>
     </div>
 
     <div class="hint-box" id="hint-b"></div>
-    <div class="success-msg" id="success-b">מצוין! המשולשים חופפים לפי צ.ז.צ</div>
+    <div class="success-msg" id="success-b">Excellent! The triangles are congruent by SAS</div>
     <div class="explanation-box" id="explain-b">
-      <strong>הסבר:</strong><br>
-      • <span class="formula">OB = 4</span> (המרחק מ-(0,0) ל-(0,4))<br>
-      • <span class="formula">OC = 4</span> (המרחק מ-(0,0) ל-(4,0))<br>
-      • לכן <span class="formula">OB = OC</span><br>
-      • <span class="formula">AO</span> צלע משותפת<br>
-      • <span class="formula">∠BOA = ∠AOC = 45°</span> (כי AO חוצה את ∠BOC)<br>
-      • לכן <span class="formula">ΔABO ≅ ΔACO</span> לפי <strong>צ.ז.צ (SAS)</strong>
+      <strong>Explanation:</strong><br>
+      • <span class="formula">OB = 4</span> (distance from (0,0) to (0,4))<br>
+      • <span class="formula">OC = 4</span> (distance from (0,0) to (4,0))<br>
+      • Therefore <span class="formula">OB = OC</span><br>
+      • <span class="formula">AO</span> is a common side<br>
+      • <span class="formula">∠BOA = ∠AOC = 45°</span> (since AO bisects ∠BOC)<br>
+      • Therefore <span class="formula">ΔABO ≅ ΔACO</span> by <strong>SAS (Side-Angle-Side)</strong>
     </div>
   </div>
 
   <div class="final-celebration" id="finalCelebration">
-    <h2>כל הכבוד! סיימת את שאלה 43!</h2>
+    <h2>Well done! You completed Question 43!</h2>
     <div style="font-size: 20px; color: #166534;">
-      הבנת גאומטריה אנליטית והוכחת חפיפת משולשים!
+      You understood analytic geometry and triangle congruence proofs!
     </div>
   </div>
 </div>
+
+<footer>&copy; Developed by Shir Sivroni</footer>
 
 <div class="celebration" id="celebration"></div>
 
@@ -568,21 +578,21 @@ let attempts = { a: 0, ob: 0, oc: 0, b: 0 };
 
 const hints = {
   a: [
-    'רמז: הזווית בין ציר X לציר Y היא 90°',
-    'רמז: AO חוצה את הזווית, כלומר מחלקת אותה לשניים',
-    'רמז: 90° ÷ 2 = ?'
+    'Hint: The angle between the X-axis and the Y-axis is 90°',
+    'Hint: AO bisects the angle, meaning it divides it into two equal parts',
+    'Hint: 90° / 2 = ?'
   ],
   ob: [
-    'רמז: B נמצאת ב-(0,4), כלומר על ציר Y',
-    'רמז: המרחק מראשית הצירים הוא פשוט ערך ה-y'
+    'Hint: B is at (0,4), meaning on the Y-axis',
+    'Hint: The distance from the origin is simply the y-value'
   ],
   oc: [
-    'רמז: C נמצאת ב-(4,0), כלומר על ציר X',
-    'רמז: המרחק מראשית הצירים הוא פשוט ערך ה-x'
+    'Hint: C is at (4,0), meaning on the X-axis',
+    'Hint: The distance from the origin is simply the x-value'
   ],
   b: [
-    'רמז: יש לנו OB = OC = 4, צלע משותפת AO, וזווית שווה ביניהן',
-    'רמז: שתי צלעות שוות וזווית ביניהן - איזה משפט זה?'
+    'Hint: We have OB = OC = 4, a common side AO, and an equal angle between them',
+    'Hint: Two equal sides and an included angle - which theorem is that?'
   ]
 };
 
@@ -656,7 +666,7 @@ function checkPartB() {
   const item = document.getElementById('question-b');
 
   if (!completed.ob || !completed.oc) {
-    showHint('hint-b', 'יש למלא קודם את אורכי OB ו-OC');
+    showHint('hint-b', 'Please fill in the lengths of OB and OC first');
     return;
   }
 
